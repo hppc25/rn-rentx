@@ -1,0 +1,12 @@
+{
+  "name": "rnrentx",
+  "displayName": "rn-rentx",
+  "expo": {
+    "name": "rn-rentx",
+    "slug": "rn-rentx",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
