@@ -6,6 +6,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import Logo from '../../assets/logo.svg';
 import { Car } from '../../components/Car';
 
+import { useNavigation } from '@react-navigation/native';
 
 import {
   CarList,
@@ -33,6 +34,11 @@ export function Home(){
     }
   ];
 
+  const navigation = useNavigation();
+
+  function handleCarDetails() {
+    navigation.navigate('CarDetails' as never)
+  }
   return (
        <Container>
            <StatusBar 
@@ -57,8 +63,8 @@ export function Home(){
                 data={cars}
                 keyExtractor={item => item.name}
                 renderItem={({ item }) => 
-                  <Car data={item}  />
-                  // onPress={() => handleCarDetails(item)}
+                  <Car data={item} 
+                  onPress={handleCarDetails} />
                 }
              ></CarList>
        </Container>

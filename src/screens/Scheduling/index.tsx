@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { StatusBar } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { useTheme } from 'styled-components';
 
@@ -18,6 +19,12 @@ interface RentalPeriod {
 
 export function Scheduling(){
   const theme = useTheme();
+
+  const navigation = useNavigation()
+
+  function handleSchedulingDetails() {
+    navigation.navigate('SchedulingDetails' as never)
+  }
 
   const [markedDates, setMarkedDates] = useState<MarkedDateProps>({} as MarkedDateProps);
   const [rentalPeriod, setRentalPeriod] = useState<RentalPeriod>({} as RentalPeriod);
@@ -70,6 +77,7 @@ export function Scheduling(){
       <Footer>
         <Button 
           title="Confirmar"
+          onPress={handleSchedulingDetails}
         />
       </Footer>
     </Container>
