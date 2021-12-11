@@ -41,7 +41,6 @@ type NextScreenProps = {
 }
 
 interface ImgProps {
-
     id: string;
     photo: string;
   
@@ -64,7 +63,6 @@ export function CarDetails({ navigation, route:{params: {car}}}: NextScreenProps
 
   const [photos, setPhotos] = useState<ImgProps[]>([]);
   
-
   useEffect(() => {
     let list:ImgProps[] = new Array();
 

@@ -8,7 +8,7 @@ import { ptBR } from './localeConfig';
 import { 
   Calendar as CustomCalendar,
   LocaleConfig,
-//   DateCallbackHandler,
+  DateCallbackHandler,
     
 } from 'react-native-calendars';
 
@@ -34,8 +34,8 @@ interface DayProps {
 
 interface CalendarProps {
   markedDates: MarkedDateProps;
-  onDayPress: MarkedDateProps;
-//   onDayPress: DateCallbackHandler;
+  // onDayPress: MarkedDateProps;
+  onDayPress: DateCallbackHandler;
 }
 
 function Calendar({ markedDates, onDayPress }: CalendarProps){
@@ -75,7 +75,7 @@ function Calendar({ markedDates, onDayPress }: CalendarProps){
       minDate={new Date()}
       markingType="period"
       markedDates={markedDates}
-    //   onDayPress={onDayPress}
+      onDayPress={onDayPress}
     />
   );
 }
