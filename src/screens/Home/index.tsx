@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, StatusBar } from 'react-native';
+import {  StatusBar } from 'react-native';
 
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 import Logo from '../../assets/logo.svg';
 import { Car } from '../../components/Car';
@@ -10,11 +11,18 @@ import api from '../../services/api';
 import { CarDTO } from '../../dtos/CarDTO';
 import { Load } from '../../components/Load';
 
-
 import {
   CarList,
   Container, Header, HeaderContent, TotalCars
 } from './styles';
+import { RootStackParamList } from '../../routes';
+
+
+
+type HomeScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'Home'
+>;
 export function Home(){
 
   // const cars =
@@ -40,8 +48,13 @@ export function Home(){
   const [cars, setCars] = useState<CarDTO[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeScreenNavigationProp>();
 
+  function handleCarDetails(car: CarDTO) {
+   
+  
+    navigation.navigate('CarDetails', { car: {...car} })
+  }
 
   useEffect(() => {
     async function fetchCars() {
@@ -57,10 +70,7 @@ export function Home(){
     fetchCars();
   },[]);
 
-  function handleCarDetails() {
-    navigation.navigate('CarDetails' as never)
 
-  }
   return (
        <Container>
            <StatusBar 
@@ -89,7 +99,7 @@ export function Home(){
               renderItem={({ item }) => 
                 <Car 
                   data={item}
-                  onPress={handleCarDetails}
+                  onPress={() => handleCarDetails(item)}
                 />
               }
             />
