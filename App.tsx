@@ -14,11 +14,7 @@ import AppLoading from 'expo-app-loading';
 import theme from './src/styles/theme';
 import { Routes } from './src/routes';
 
-import { Home } from './src/screens/Home';
 import { ThemeProvider } from 'styled-components';
-import { CarDetails } from './src/screens/CarDetail';
-import { Scheduling } from './src/screens/Scheduling';
-import { SchedulingDetails } from './src/screens/SchedulingDetails';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
